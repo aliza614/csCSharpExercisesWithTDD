@@ -1,4 +1,6 @@
-﻿namespace CSharpExercisesWithTDD
+﻿using System.Linq;
+
+namespace CSharpExercisesWithTDD
 {
     /// <summary>
     /// This class will handle the methods for exercises on this page:
@@ -18,7 +20,13 @@
         /// <exception cref="NotImplementedException"></exception>
         public static string LastWordContainingLetter(string[] words)
         {
-            throw new NotImplementedException();
+            //order words
+            words=words.OrderBy(word=>word).ToArray();
+            //return the first word which contains e
+            //LastOrDefault can return null if the search comes up empty
+            //other way to do it words.Where(word => word.ToLower().Contains("e")).LastOrDefault();
+            return words.LastOrDefault(word => word.ToLower().Contains("e"));
+            
         }
 
         /// <summary>
@@ -30,7 +38,7 @@
         /// <returns></returns>
         public static string[] MinimumLength(string[] words)
         {
-            throw new NotImplementedException();
+            return words.Where(word=>word.Length>=5).Select(word=>word.ToUpper()).ToArray();
         }
 
         /// <summary>

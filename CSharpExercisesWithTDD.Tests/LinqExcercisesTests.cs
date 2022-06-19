@@ -13,7 +13,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new string[] { "plane", "ferry", "car", "bike" }, "plane")]
         public void LastWordContainingLetter_GivenStringArray_ReturnLastWord_AfterSortingAlphebetically_ThatContainsE(string[] input, string output)
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(output,LinqExercises.LastWordContainingLetter(input));
         }
 
         [Test, Description(@"Minimum Length - Given an array of strings, Write a query that returns any strings that are
@@ -21,7 +21,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new string[] { "computer", "usb" }, new string[] { "COMPUTER" })]
         public void MinimumLength_GivenStringArray_ReturnWordsLongerThanFiveChars_InUppercase(string[] input, string[] output)
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(LinqExercises.MinimumLength(input),output);
         }
 
         [Test, Description(@"Numbers From Range - Given an array of integers, Write a query that returns list of numbers
