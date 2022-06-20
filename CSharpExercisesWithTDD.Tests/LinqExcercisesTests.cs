@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using Shouldly;
 
 namespace CSharpExercisesWithTDD.Tests
 {
@@ -29,7 +30,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new int[] { 67, 92, 153, 15 }, new int[] { 67, 92 })]
         public void NumbersFromRange_GivenIntArray_ReturnsNumbersFrom30To100_AsList(int[] input, int[] output)
         {
-            throw new NotImplementedException();
+            LinqExercises.NumbersFromRange(input).ShouldBe(output);
         }
 
         [Test, Description(@"Replace substring - Given an array of strings, Write a query that replaces 'ea' substring
@@ -37,7 +38,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new string[] { "learn", "current", "deal" }, new string[] { "l*rn", "current", "d*l" })]
         public void ReplaceSubstring_GivenStringArray_ReturnW_ea_ReplacedWith_Asterisks(string[] input, string[] output)
         {
-            throw new NotImplementedException();
+            LinqExercises.ReplaceSubstring(input).ShouldBe(output);
         }
 
         [Test, Description(@"Select Words - Given an array of strings, Write a query that returns words starting with
@@ -45,7 +46,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new string[] { "mum", "amsterdam", "bloom" }, new string[] { "amsterdam" })]
         public void SelectWords_GivinStringArray_ReturnsWords_StartingWithA_EndingWithM(string[] input, string[] output)
         {
-            throw new NotImplementedException();
+            LinqExercises.SelectWords(input).ShouldBe(output);
         }
 
         [Test, Description(@"Square Greater Than 20 - Given an array of integers, Write a query that returns numbers
@@ -53,7 +54,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new int[] { 7, 2, 30 }, new string[] { "7 - 49", "30 - 900" })]
         public void SquareGreaterThanTwenty_GivenIntArray_ReturnNumbersAndTheirSquare_IfSquareIsGreaterThanTwenty(int[] input, string[] output)
         {
-            throw new NotImplementedException();
+            LinqExercises.SquareGreaterThanTwenty(input).ShouldBe(output);
         }
 
         [Test, Description(@"Top 5 Numbers - Given an array of integers, Write a query that returns top 5 numbers from the
@@ -61,7 +62,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCase(new int[] { 78, -9, 0, 23, 54, 21, 7, 86 }, new int[] { 86, 78, 54, 23, 21, })]
         public void TopFiveNumbers_GivenIntArray_ReturnTopFive_FromArray_InDescendingOrder(int[] input, int[] output)
         {
-            throw new NotImplementedException();
+            LinqExercises.TopFiveNumbers(input).ShouldBe(output);
         }
 
         #endregion Easy
@@ -123,7 +124,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCaseSource(nameof(_decryptNumberSource))]
         public void DecryptNumber_GivenRandomSpecialChars_DecryptUsingKeyboardNumRow_ReturnNumbersAsString(string input, string output)
         {
-            throw new NotImplementedException();
+            LinqExercises.DecryptNumber(input).ShouldBe(output);
         }
 
         [Test, Description(@"Frequency of Letters - Given string, Write a query that returns letters and their frequencies in the string.
@@ -131,7 +132,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCaseSource(nameof(_frequencyOfLettersSource))]
         public void FrequencyOfLetters_GivenString_ReturnLetter_AndItsFrequency(string input, string output)
         {
-            throw new NotImplementedException();
+            LinqExercises.FrequencyOfLetters(input).ShouldBe(output);
         }
 
         [Test, Description(@"Most Frequent Character - Given a string, Write a query that returns most frequent character
@@ -140,7 +141,7 @@ namespace CSharpExercisesWithTDD.Tests
         [TestCaseSource(nameof(_mostFrequentCharacterSource))]
         public void MostFrequentCharacter_GivenString_ReturnMostFrequentCharacter(string input, char output)
         {
-            throw new NotImplementedException();
+            LinqExercises.MostFrequentCharacter(input).ShouldBe(output);
         }
 
         [Test, Description(@"Shuffle An Array - Given an array of integers, Write a query that shuffles assorted array,

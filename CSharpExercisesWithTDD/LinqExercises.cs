@@ -8,6 +8,7 @@ namespace CSharpExercisesWithTDD
     /// </summary>
     public static class LinqExercises
     {
+        private static char c;
         #region Easy
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace CSharpExercisesWithTDD
         /// <returns></returns>
         public static List<int> NumbersFromRange(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.Where(n=>n>30&&n<100).ToList();
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace CSharpExercisesWithTDD
         /// <exception cref="NotImplementedException"></exception>
         public static string[] ReplaceSubstring(string[] words)
         {
-            throw new NotImplementedException();
+            return words.Select(word => word.Replace("ea", "*")).ToArray();
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace CSharpExercisesWithTDD
         /// <returns></returns>
         public static string[] SelectWords(string[] words)
         {
-            throw new NotImplementedException();
+            return words.Where(word => word[0] == 'a' && word[^1]=='m').ToArray();
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace CSharpExercisesWithTDD
         /// <returns></returns>
         public static string[] SquareGreaterThanTwenty(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.Where(n => Math.Pow(n, 2) > 20).Select(n=>$"{n} - {Math.Pow(n,2)}").ToArray();
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace CSharpExercisesWithTDD
         /// <exception cref="NotImplementedException"></exception>
         public static int[] TopFiveNumbers(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers.OrderByDescending(n => n).Take(5).ToArray();
         }
 
         #endregion Easy
@@ -119,7 +120,22 @@ namespace CSharpExercisesWithTDD
         /// <exception cref="NotImplementedException"></exception>
         public static string DecryptNumber(string input)
         {
-            throw new NotImplementedException();
+            return input.Select(c => {
+                return c switch
+                {
+                    '@' => '2',
+                    '#' => '3',
+                    '$' => '4',
+                    '%' => '5',
+                    '^' => '6',
+                    '&' => '7',
+                    '*' => '8',
+                    '(' => '9',
+                    ')' => '0',
+                    _ => '1',
+                };
+            }
+            ).ToString()??"";
         }
 
         /// <summary>
@@ -132,8 +148,8 @@ namespace CSharpExercisesWithTDD
         /// <exception cref="NotImplementedException"></exception>
         public static string FrequencyOfLetters(string input)
         {
-            throw new NotImplementedException();
-        }
+            return String.Join(",", input.Select(c => $"Letter {c} occurs {input.Where(c1=>c==c1).Count()} time(s)"));
+         }
 
         /// <summary>
         /// Most Frequent Character
@@ -145,7 +161,20 @@ namespace CSharpExercisesWithTDD
         /// <exception cref="NotImplementedException"></exception>
         public static char MostFrequentCharacter(string input)
         {
-            throw new NotImplementedException();
+            //input="hello";
+            
+            //get the count of each character then return the character where the count is max 
+            //first write code to get the max
+            //Inprogress
+            //OLD return input.Where(/* gets the count*/c => input.Where(c1=>c1==c).Count()/*end gets the count*/==/*gets the max count*/input.Select(c2 => input.Where(c1 => c1 == c2).Count()).ToArray().Max()/*end get max count*/).ToString().Single();
+            //v2 Dictionary<char, int> charAndFreq = new Dictionary<char, int>();
+            //v2 foreach ((char, int) tuple in (input.Select(c => (c, input.Where(c1 => c1 == c).Count()))))
+            //v2    charAndFreq.Add(tuple.Item1,tuple.Item2);
+            //(char[],int[])input.Select(c => (c, input.Where(c1 => c1 == c).Count())).ToArray();
+            var e=((char,int)[])(input.Select(c => (c, input.Where(x => x == c).Count())).ToArray());
+            var max = e.Where((c/*this is the element*/, i/*this is the index*/) => c.Item2 == e.Select((c, i) => c.Item2).Max());
+            return max.Select((c, i) => c.Item1).First();
+           
         }
 
         /// <summary>
